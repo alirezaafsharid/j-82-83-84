@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 
-export default class Social extends Component {
-  render() {
-    let { href, img } = this.props;
+export default function Social(props) {
+  // let {href, img} = this.props
 
-    console.log(this.props, "props");
-    return (
-      <li>
-        <a href={href} target="_blank">
-          <img src={img} />
-        </a>
-      </li>
-    );
-  }
+  return (
+    <li>
+      <a href={props.href} target="_blank">
+        <img src={props.img} />
+      </a>
+    </li>
+  );
 }

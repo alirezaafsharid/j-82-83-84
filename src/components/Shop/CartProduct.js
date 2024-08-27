@@ -1,30 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class CartProduct extends Component {
-  clickHandler(id) {
-    this.props.onRemove(id);
-  }
+export default function CartProduct(props) {
+  const clickHandler = (id) => {
+    props.onRemove(id);
+  };
 
-  render() {
-    let { id, title, price, img } = this.props;
+  // let { id, title, price, img } = this.props
 
-    return (
-      <div class="cart-row">
-        <div class="cart-item cart-column">
-          <img class="cart-item-image" src={img} width="100" height="100" />
-          <span class="cart-item-title">{title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-          <button
-            class="btn btn-danger"
-            type="button"
-            onClick={this.clickHandler.bind(this, id)}
-          >
-            REMOVE
-          </button>
-        </div>
+  return (
+    <div class="cart-row">
+      <div class="cart-item cart-column">
+        <img class="cart-item-image" src={props.img} width="100" height="100" />
+        <span class="cart-item-title">{props.title}</span>
       </div>
-    );
-  }
+      <span class="cart-price cart-column">${props.price}</span>
+      <div class="cart-quantity cart-column">
+        <button
+          class="btn btn-danger"
+          type="button"
+          onClick={() => clickHandler(props.id)}
+        >
+          REMOVE
+        </button>
+      </div>
+    </div>
+  );
 }
